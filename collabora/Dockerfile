@@ -12,14 +12,14 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008
 RUN apt-get update \
-    && apt install -y wget \
-    && wget https://collaboraoffice.com/downloads/gpg/collaboraonline-release-keyring.gpg -P /usr/share/keyrings/ \
+    && apt-get install -y wget \
+    && wget --progress=dot:giga https://collaboraoffice.com/downloads/gpg/collaboraonline-release-keyring.gpg -P /usr/share/keyrings/ \
     && echo -e "Types: deb" >> /etc/apt/sources.list.d/collaboraonline.sources \
     && echo -e "URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb" >> /etc/apt/sources.list.d/collaboraonline.sources \
     && echo -e "Suites: ./" >> /etc/apt/sources.list.d/collaboraonline.sources \
     && echo -e "Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg" >> /etc/apt/sources.list.d/collaboraonline.sources \
     && apt-get update \
-    && apt install -y coolwsd code-brand \
+    && apt-get install -y coolwsd code-brand \
     && rm -fr \
         /tmp/* \
         /etc/nginx \
