@@ -13,8 +13,7 @@ ports:
   3113/tcp: 3113
 ports_description:
   3113/tcp: Web Interface
-privileged:
-  - SYS_ADMIN
+privileged: true
 map:
   - addon_config:rw
   - ssl
