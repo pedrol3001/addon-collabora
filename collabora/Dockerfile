@@ -32,6 +32,8 @@ RUN apt-get update \
 # Copy root filesystem
 COPY rootfs /
 
+EXPOSE 3113
+
 # Build arguments
 ARG BUILD_DATE
 ARG BUILD_DESCRIPTION

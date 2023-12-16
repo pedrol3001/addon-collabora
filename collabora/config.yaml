@@ -10,9 +10,9 @@ arch:
   - aarch64
   - amd64
 ports:
-  80/tcp: 3113
+  3113/tcp: 3113
 ports_description:
-  80/tcp: Web Interface
+  3113/tcp: Web Interface
 map:
   - addon_config:rw
   - ssl

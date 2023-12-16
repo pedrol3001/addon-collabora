@@ -4,16 +4,16 @@
 # Home Assistant Community Add-on: Collabora
 # Configures NGINX for use with Collabora
 # ==============================================================================
-declare admin_port
+declare port
 
 # Generate direct access configuration, if enabled.
-admin_port=$(bashio::addon.port 80)
-if bashio::var.has_value "${admin_port}"; then
+port=$(bashio::addon.port 3113)
+if bashio::var.has_value "${port}"; then
     bashio::config.require.ssl
     bashio::var.json \
         certfile "$(bashio::config 'certfile')" \
         keyfile "$(bashio::config 'keyfile')" \
-        port "^${admin_port}" \
+        port "^${port}" \
         ssl "^$(bashio::config 'ssl')" \
         | tempio \
             -template /etc/nginx/templates/direct.gtpl \
