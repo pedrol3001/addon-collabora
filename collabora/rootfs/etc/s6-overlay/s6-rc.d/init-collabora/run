@@ -12,7 +12,7 @@ rm -f /etc/coolwsd/coolwsd.xml
 bashio::var.json \
   public_url "$(bashio::config 'public_url')" \
   | tempio \
-    -template /etc/semaphore/config.gtpl \
+    -template /etc/collabora/config.gtpl \
     -out /etc/coolwsd/coolwsd.xml
 
 if [ "$(bashio::config 'log_level')" == "debug" ]; then
