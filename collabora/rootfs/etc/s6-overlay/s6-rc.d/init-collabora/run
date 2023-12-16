@@ -1,0 +1,20 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: Collabora
+# Collabora init script, runs before any other service
+# ==============================================================================
+
+bashio::log.info "Configuring Collabora..."
+
+rm -f /etc/coolwsd/coolwsd.xml
+
+bashio::var.json \
+  public_url "$(bashio::config 'public_url')" \
+  | tempio \
+    -template /etc/semaphore/config.gtpl \
+    -out /etc/coolwsd/coolwsd.xml
+
+if [ "$(bashio::config 'log_level')" == "debug" ]; then
+  bashio::log.info "$(cat /config/coolwsd.xml)"
+fi
