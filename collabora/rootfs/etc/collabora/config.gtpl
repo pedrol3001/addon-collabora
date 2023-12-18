@@ -37,7 +37,6 @@
     <child_root_path desc="Path to the directory under which the chroot jails for the child processes will be created. Should be on the same file system as systemplate and lotemplate. Must be an empty directory." type="path" relative="true" default="jails"></child_root_path>
     <mount_jail_tree desc="Controls whether the systemplate and lotemplate contents are mounted or not, which is much faster than the default of linking/copying each file." type="bool" default="true"></mount_jail_tree>
 
-    <server_name desc="External hostname:port of the server running coolwsd. If empty, it's derived from the request (please set it if this doesn't work). May be specified when behind a reverse-proxy or when the hostname is not reachable directly." type="string" default="">{{.public_url}}</server_name>
     <file_server_root_path desc="Path to the directory that should be considered root for the file server. This should be the directory containing cool." type="path" relative="true" default="browser/../"></file_server_root_path>
     <hexify_embedded_urls desc="Enable to protect encoded URLs from getting decoded by intermediate hops. Particularly useful on Azure deployments" type="bool" default="false"></hexify_embedded_urls>
     <experimental_features desc="Enable/Disable experimental features" type="bool" default="true">true</experimental_features>
@@ -317,4 +316,5 @@
         <enable desc="Enable overwrite mode (user can use insert key)" type="bool" default="true">true</enable>
     </overwrite_mode>
 
+    <server_name desc="External hostname:port of the server running coolwsd. If empty, it's derived from the request (please set it if this doesn't work). May be specified when behind a reverse-proxy or when the hostname is not reachable directly." type="string" default="">{{ .public_url }}</server_name>
 </config>

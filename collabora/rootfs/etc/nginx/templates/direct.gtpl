@@ -21,20 +21,17 @@ server {
         proxy_set_header Host $http_host;
     }
 
-
     # WOPI discovery URL
     location ^~ /hosting/discovery {
         proxy_pass http://backend;
         proxy_set_header Host $http_host;
     }
 
-
     # Capabilities
     location ^~ /hosting/capabilities {
         proxy_pass http://backend;
         proxy_set_header Host $http_host;
     }
-
 
     # main websocket
     location ~ ^/cool/(.*)/ws$ {
@@ -45,13 +42,11 @@ server {
         proxy_read_timeout 36000s;
     }
 
-
     # download, presentation and image upload
     location ~ ^/(c|l)ool {
         proxy_pass http://backend;
         proxy_set_header Host $http_host;
     }
-
 
     # Admin Console websocket
     location ^~ /cool/adminws {
