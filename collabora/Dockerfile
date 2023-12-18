@@ -62,7 +62,6 @@ RUN apt-get update \
         collaboraofficebasis-vi \
         collaboraofficebasis-zh-cn \
         collaboraofficebasis-zh-tw \
-    && chown cool:cool /etc/coolwsd \
     && dpkg --purge  --force-remove-essential --ignore-depends=perl-base perl-base \
     && rm -fr \
         /tmp/* \
