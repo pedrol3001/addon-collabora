@@ -7,4 +7,4 @@
 
 bashio::log.info "Starting Collabora..."
 
-exec s6-setuidgid cool /usr/bin/coolwsd --version --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/config/coolwsd --port 43003
+exec systemctl start coolwsd

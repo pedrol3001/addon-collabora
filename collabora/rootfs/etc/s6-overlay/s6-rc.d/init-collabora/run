@@ -16,6 +16,7 @@ fi
 
 bashio::var.json \
   public_url "$(bashio::config 'public_url')" \
+  log_level "$(bashio::config 'log_level')" \
   | tempio \
     -template /etc/collabora/config.gtpl \
     -out /etc/coolwsd/coolwsd.xml

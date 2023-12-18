@@ -20,7 +20,6 @@ RUN apt-get update \
     && echo -e "Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg" >> /etc/apt/sources.list.d/collaboraonline.sources \
     && apt-get update \
     && apt-get install -y --no-install-recommends coolwsd code-brand \
-    && chown cool:cool /etc/coolwsd \
     && rm -fr \
         /tmp/* \
         /etc/nginx \
@@ -34,8 +33,6 @@ RUN apt-get update \
 COPY rootfs /
 
 EXPOSE 3113
-
-USER cool
 
 # Build arguments
 ARG BUILD_DATE

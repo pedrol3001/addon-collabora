@@ -24,7 +24,7 @@ options:
   keyfile: privkey.pem
   public_url: ""
 schema:
-  log_level: list(info|warn|error|verbose|debug)
+  log_level: list(trace|debug|info|notice|warning|error|fatal)?
   ssl: bool
   certfile: str
   keyfile: str
