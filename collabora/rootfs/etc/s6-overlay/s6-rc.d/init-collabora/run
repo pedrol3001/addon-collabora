@@ -15,6 +15,7 @@ if ! bashio::fs.directory_exists '/config/coolwsd'; then
 fi
 
 bashio::var.json \
+  ssl "^$(bashio::config 'ssl')" \
   public_url "$(bashio::config 'public_url')" \
   log_level "$(bashio::config 'log_level')" \
   | tempio \
