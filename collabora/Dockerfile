@@ -62,7 +62,6 @@ RUN apt-get update \
         collaboraofficebasis-vi \
         collaboraofficebasis-zh-cn \
         collaboraofficebasis-zh-tw \
-    && dpkg --purge  --force-remove-essential --ignore-depends=perl-base perl-base \
     && rm -fr \
         /tmp/* \
         /etc/nginx \
