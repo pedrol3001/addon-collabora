@@ -12,7 +12,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends wget \
+    && apt-get install -y --no-install-recommends wget nginx \
     && wget --progress=dot:giga https://collaboraoffice.com/downloads/gpg/collaboraonline-release-keyring.gpg -P /usr/share/keyrings/ \
     && echo -e "Types: deb" >> /etc/apt/sources.list.d/collaboraonline.sources \
     && echo -e "URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb" >> /etc/apt/sources.list.d/collaboraonline.sources \
