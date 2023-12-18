@@ -22,5 +22,5 @@ bashio::var.json \
     -out /etc/coolwsd/coolwsd.xml
 
 if [ "$(bashio::config 'log_level')" == "debug" ]; then
-  bashio::log.info "$(cat /config/coolwsd.xml)"
+  bashio::log.info "$(cat /etc/coolwsd/coolwsd.xml)"
 fi
