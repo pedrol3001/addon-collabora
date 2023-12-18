@@ -10,6 +10,8 @@ ARG COLLABORA_VERSION=2.9.37
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+ENV LC_CTYPE C.UTF-8
+
 # hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends wget nginx \
@@ -60,11 +62,14 @@ RUN apt-get update \
         collaboraofficebasis-vi \
         collaboraofficebasis-zh-cn \
         collaboraofficebasis-zh-tw \
+    && chown cool:cool /etc/coolwsd \
+    && dpkg --purge  --force-remove-essential --ignore-depends=perl-base perl-base \
     && rm -fr \
         /tmp/* \
         /etc/nginx \
         /var/{cache,log}/* \
         /var/lib/apt/lists/* \
+        /etc/coolwsd/proof_key* \
     \
     && mkdir -p /var/log/nginx \
     && touch /var/log/nginx/error.log
