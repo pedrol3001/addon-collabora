@@ -19,7 +19,48 @@ RUN apt-get update \
     && echo -e "Suites: ./" >> /etc/apt/sources.list.d/collaboraonline.sources \
     && echo -e "Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg" >> /etc/apt/sources.list.d/collaboraonline.sources \
     && apt-get update \
-    && apt-get install -y --no-install-recommends coolwsd code-brand \
+    && apt-get install -y --no-install-recommends coolwsd code-brand collaboraoffice-dict-* \
+        collaboraofficebasis-ar \
+        collaboraofficebasis-bg \
+        collaboraofficebasis-ca \
+        collaboraofficebasis-cs \
+        collaboraofficebasis-da \
+        collaboraofficebasis-de \
+        collaboraofficebasis-el \
+        collaboraofficebasis-en-gb \
+        collaboraofficebasis-en-us \
+        collaboraofficebasis-eo \
+        collaboraofficebasis-es \
+        collaboraofficebasis-eu \
+        collaboraofficebasis-fi \
+        collaboraofficebasis-fr \
+        collaboraofficebasis-gl \
+        collaboraofficebasis-he \
+        collaboraofficebasis-hr \
+        collaboraofficebasis-hu \
+        collaboraofficebasis-id \
+        collaboraofficebasis-is \
+        collaboraofficebasis-it \
+        collaboraofficebasis-ja \
+        collaboraofficebasis-ko \
+        collaboraofficebasis-lo \
+        collaboraofficebasis-nb \
+        collaboraofficebasis-nl \
+        collaboraofficebasis-oc \
+        collaboraofficebasis-pl \
+        collaboraofficebasis-pt \
+        collaboraofficebasis-pt-br \
+        collaboraofficebasis-ru \
+        collaboraofficebasis-sk \
+        collaboraofficebasis-sl \
+        collaboraofficebasis-sq \
+        collaboraofficebasis-sv \
+        collaboraofficebasis-tr \
+        collaboraofficebasis-uk \
+        collaboraofficebasis-vi \
+        collaboraofficebasis-zh-cn \
+        collaboraofficebasis-zh-tw \
+    && chown cool:cool /etc/coolwsd \
     && rm -fr \
         /tmp/* \
         /etc/nginx \
@@ -33,6 +74,8 @@ RUN apt-get update \
 COPY rootfs /
 
 EXPOSE 3113
+
+USER cool
 
 # Build arguments
 ARG BUILD_DATE
