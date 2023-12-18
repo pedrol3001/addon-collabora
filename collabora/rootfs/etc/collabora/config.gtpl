@@ -181,28 +181,6 @@
       <proxy_prefix type="bool" default="false" desc="Enable a ProxyPrefix to be passed int through which to redirect requests"></proxy_prefix>
     </net>
 
-    <ssl desc="SSL settings">
-        <!-- switches from https:// + wss:// to http:// + ws:// -->
-        <enable type="bool" desc="Controls whether SSL encryption between coolwsd and the network is enabled (do not disable for production deployment). If default is false, must first be compiled with SSL support to enable." default="true">false</enable>
-        <!-- SSL off-load can be done in a proxy, if so disable SSL, and enable termination below in production -->
-        <termination desc="Connection via proxy where coolwsd acts as working via https, but actually uses http." type="bool" default="true">{{ .ssl }}</termination>
-        <cert_file_path desc="Path to the cert file" relative="false">/etc/coolwsd/cert.pem</cert_file_path>
-        <key_file_path desc="Path to the key file" relative="false">/etc/coolwsd/key.pem</key_file_path>
-        <ca_file_path desc="Path to the ca file" relative="false">/etc/coolwsd/ca-chain.cert.pem</ca_file_path>
-        <cipher_list desc="List of OpenSSL ciphers to accept" default="ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"></cipher_list>
-        <hpkp desc="Enable HTTP Public key pinning" enable="false" report_only="false">
-            <max_age desc="HPKP's max-age directive - time in seconds browser should remember the pins" enable="true">1000</max_age>
-            <report_uri desc="HPKP's report-uri directive - pin validation failure are reported at this URL" enable="false"></report_uri>
-            <pins desc="Base64 encoded SPKI fingerprints of keys to be pinned">
-            <pin></pin>
-            </pins>
-        </hpkp>
-        <sts desc="Strict-Transport-Security settings, per rfc6797. Subdomains are always included.">
-            <enabled desc="Whether or not Strict-Transport-Security is enabled. Enable only when ready for production. Cannot be disabled without resetting the browsers." type="bool" default="false">false</enabled>
-            <max_age desc="Strict-Transport-Security max-age directive, in seconds. 0 is allowed; please see rfc6797 for details. Defaults to 1 year." type="int" default="31536000">31536000</max_age>
-        </sts>
-    </ssl>
-
     <security desc="Altering these defaults potentially opens you to significant risk">
       <seccomp desc="Should we use the seccomp system call filtering." type="bool" default="true">true</seccomp>
       <capabilities desc="Should we require capabilities to isolate processes into chroot jails" type="bool" default="true">true</capabilities>
@@ -315,6 +293,28 @@
     <overwrite_mode>
         <enable desc="Enable overwrite mode (user can use insert key)" type="bool" default="true">true</enable>
     </overwrite_mode>
+
+    <ssl desc="SSL settings">
+        <!-- switches from https:// + wss:// to http:// + ws:// -->
+        <enable type="bool" desc="Controls whether SSL encryption between coolwsd and the network is enabled (do not disable for production deployment). If default is false, must first be compiled with SSL support to enable." default="true">false</enable>
+        <!-- SSL off-load can be done in a proxy, if so disable SSL, and enable termination below in production -->
+        <termination desc="Connection via proxy where coolwsd acts as working via https, but actually uses http." type="bool" default="true">{{ .ssl }}</termination>
+        <cert_file_path desc="Path to the cert file" relative="false">/etc/coolwsd/cert.pem</cert_file_path>
+        <key_file_path desc="Path to the key file" relative="false">/etc/coolwsd/key.pem</key_file_path>
+        <ca_file_path desc="Path to the ca file" relative="false">/etc/coolwsd/ca-chain.cert.pem</ca_file_path>
+        <cipher_list desc="List of OpenSSL ciphers to accept" default="ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"></cipher_list>
+        <hpkp desc="Enable HTTP Public key pinning" enable="false" report_only="false">
+            <max_age desc="HPKP's max-age directive - time in seconds browser should remember the pins" enable="true">1000</max_age>
+            <report_uri desc="HPKP's report-uri directive - pin validation failure are reported at this URL" enable="false"></report_uri>
+            <pins desc="Base64 encoded SPKI fingerprints of keys to be pinned">
+            <pin></pin>
+            </pins>
+        </hpkp>
+        <sts desc="Strict-Transport-Security settings, per rfc6797. Subdomains are always included.">
+            <enabled desc="Whether or not Strict-Transport-Security is enabled. Enable only when ready for production. Cannot be disabled without resetting the browsers." type="bool" default="false">false</enabled>
+            <max_age desc="Strict-Transport-Security max-age directive, in seconds. 0 is allowed; please see rfc6797 for details. Defaults to 1 year." type="int" default="31536000">31536000</max_age>
+        </sts>
+    </ssl>
 
     <server_name desc="External hostname:port of the server running coolwsd. If empty, it's derived from the request (please set it if this doesn't work). May be specified when behind a reverse-proxy or when the hostname is not reachable directly." type="string" default="">{{ .public_url }}</server_name>
 </config>
