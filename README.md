@@ -19,10 +19,9 @@ Since [Collabora][collabora] can be self-hosted, this addon aims to create a col
 
 ## Features
 
-- Collabora self host
-- Ingress access
-- Direct connection with home assistant authentication
+- Collabora CODE
 - SSL support
+- Nextcloud office support (SSL only)
 
 ## Support
 
