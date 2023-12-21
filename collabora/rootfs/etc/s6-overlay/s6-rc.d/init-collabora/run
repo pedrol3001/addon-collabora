@@ -9,11 +9,6 @@ bashio::log.info "Configuring Collabora..."
 
 rm -f /etc/coolwsd/coolwsd.xml
 
-# Ensure configuration file server directory exists
-if ! bashio::fs.directory_exists '/config/coolwsd'; then
-    mkdir -p /config/coolwsd || bashio::exit.nok "Failed to create n8n configuration directory"
-fi
-
 bashio::var.json \
   ssl "^$(bashio::config 'ssl')" \
   public_url "$(bashio::config 'public_url')" \

@@ -14,7 +14,6 @@ ports:
 ports_description:
   3113/tcp: Web Interface
 map:
-  - addon_config:rw
   - ssl
 options:
   ssl: false
