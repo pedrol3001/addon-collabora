@@ -11,11 +11,6 @@ declare public_url
 
 rm -f /etc/coolwsd/coolwsd.xml
 
-public_url="$(bashio::config 'public_url')"
-if ! bashio::var.has_value "${public_url}"; then
-  public_url=''
-fi
-
 bashio::var.json \
   public_url "$public_url" \
   ssl "^$(bashio::config 'ssl')" \

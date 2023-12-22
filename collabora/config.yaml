@@ -19,6 +19,7 @@ options:
   ssl: false
   certfile: fullchain.pem
   keyfile: privkey.pem
+  public_url: ""
 schema:
   ssl: bool
   certfile: str
