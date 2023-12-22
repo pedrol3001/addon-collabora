@@ -14,7 +14,7 @@ bashio::var.json \
   public_url "$(bashio::config 'public_url')" \
   log_level "$(bashio::config 'log_level')" \
   | tempio \
-    -template /etc/collabora/config.gtpl \
+    -template /etc/collabora/collabora.gtpl \
     -out /etc/coolwsd/coolwsd.xml
 
 if [ "$(bashio::config 'log_level')" == "debug" ]; then
