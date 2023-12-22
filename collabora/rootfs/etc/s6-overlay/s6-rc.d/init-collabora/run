@@ -21,7 +21,7 @@ bashio::var.json \
   ssl "^$(bashio::config 'ssl')" \
   log_level "$(bashio::config 'log_level')" \
   | tempio \
-    -template /etc/collabora/collabora.gtpl \
+    -template /etc/collabora/config.gtpl \
     -out /etc/coolwsd/coolwsd.xml
 
 if [ "$(bashio::config 'log_level')" == "debug" ]; then
