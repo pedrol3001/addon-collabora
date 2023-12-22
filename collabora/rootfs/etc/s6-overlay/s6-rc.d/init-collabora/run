@@ -12,7 +12,7 @@ declare public_url
 rm -f /etc/coolwsd/coolwsd.xml
 
 bashio::var.json \
-  public_url "$public_url" \
+  public_url "$(bashio::config 'public_url')" \
   ssl "^$(bashio::config 'ssl')" \
   log_level "$(bashio::config 'log_level')" \
   | tempio \
